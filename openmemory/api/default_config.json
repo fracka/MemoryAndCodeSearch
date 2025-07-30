@@ -1,18 +1,16 @@
 {
     "mem0": {
         "llm": {
-            "provider": "litellm",
+            "provider": "gemini",
             "config": {
-                "model": "gemini/gemini-2.5-flash",
-                "temperature": 0.1,
-                "max_tokens": 2000,
+                "model": "gemini-2.5-flash",
                 "api_key": "env:GEMINI_API_KEY"
             }
         },
         "embedder": {
-            "provider": "litellm",
+            "provider": "gemini",
             "config": {
-                "model": "gemini/text-embedding-001", 
+                "model": "models/text-embedding-004", 
                 "api_key": "env:GEMINI_API_KEY"
             }
         }
