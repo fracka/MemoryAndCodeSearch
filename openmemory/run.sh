@@ -33,9 +33,9 @@ if [ $(docker ps -aq -f name=mem0_ui) ]; then
   docker rm -f mem0_ui
 fi
 
-# Find an available port starting from 3000
+# Find an available port starting from 3001
 echo "🔍 Looking for available port for frontend..."
-for port in {3000..3010}; do
+for port in {3001..3011}; do
   if ! lsof -i:$port >/dev/null 2>&1; then
     FRONTEND_PORT=$port
     break
@@ -43,7 +43,7 @@ for port in {3000..3010}; do
 done
 
 if [ -z "$FRONTEND_PORT" ]; then
-  echo "❌ Could not find an available port between 3000 and 3010"
+  echo "❌ Could not find an available port between 3001 and 3011"
   exit 1
 fi
 
@@ -61,13 +61,15 @@ services:
   mem0_store:
     image: qdrant/qdrant
     ports:
-      - "6333:6333"
+      - "6335:6333"
     volumes:
       - mem0_storage:/mem0/storage
   openmemory-mcp:
     image: mem0/openmemory-mcp:latest
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
       - USER=${USER}
       - QDRANT_HOST=mem0_store
       - QDRANT_PORT=6333

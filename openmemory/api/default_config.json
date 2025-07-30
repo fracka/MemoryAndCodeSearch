@@ -1,20 +1,20 @@
 {
     "mem0": {
         "llm": {
-            "provider": "openai",
+            "provider": "litellm",
             "config": {
-                "model": "gpt-4o-mini",
+                "model": "gemini/gemini-2.5-flash",
                 "temperature": 0.1,
                 "max_tokens": 2000,
-                "api_key": "env:OPENAI_API_KEY"
+                "api_key": "env:GEMINI_API_KEY"
             }
         },
         "embedder": {
-            "provider": "openai",
+            "provider": "litellm",
             "config": {
-                "model": "text-embedding-3-small",
-                "api_key": "env:OPENAI_API_KEY"
+                "model": "gemini/text-embedding-001", 
+                "api_key": "env:GEMINI_API_KEY"
             }
         }
     }
-} 
+}
